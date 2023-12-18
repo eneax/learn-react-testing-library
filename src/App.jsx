@@ -1,7 +1,15 @@
 export default function App() {
   return (
-    <div>
+    <main>
       <h1>Learn React Testing Library</h1>
-    </div>
+
+      <a
+        href="https://testing-library.com/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Get Started
+      </a>
+    </main>
   );
 }
