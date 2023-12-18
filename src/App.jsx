@@ -1,3 +1,5 @@
+import "./App.css";
+
 export default function App() {
   return (
     <main>
@@ -10,6 +12,8 @@ export default function App() {
       >
         Get Started
       </a>
+
+      <button className="red-button">Change to blue</button>
     </main>
   );
 }

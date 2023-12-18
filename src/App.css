@@ -1,0 +1,7 @@
+.red-button {
+  background-color: #ff0000;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  margin: 10px;
+}

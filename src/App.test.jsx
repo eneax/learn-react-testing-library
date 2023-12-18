@@ -19,3 +19,15 @@ test("App contains correct link", () => {
   const linkElement = screen.getByRole("link", { name: /get started/i });
   expect(linkElement).toBeInTheDocument();
 });
+
+test("button renders with correct color before click", () => {
+  render(<App />);
+  const buttonElement = screen.getByRole("button", { name: /blue/i });
+  expect(buttonElement).toHaveClass("red-button");
+});
+
+test("button renders with correct text before click", () => {});
+
+test("button renders with correct color after click", () => {});
+
+test("button renders with correct text after click", () => {});
