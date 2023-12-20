@@ -28,7 +28,7 @@ test("button click flow", () => {
   const buttonElement = screen.getByRole("button", { name: /blue/i });
 
   // check initial color
-  expect(buttonElement).toHaveClass("red-button");
+  expect(buttonElement).toHaveClass("red");
 
   // click button
   fireEvent.click(buttonElement);
@@ -37,7 +37,7 @@ test("button click flow", () => {
   expect(buttonElement).toHaveTextContent(/red/i);
 
   // check button color
-  expect(buttonElement).toHaveClass("blue-button");
+  expect(buttonElement).toHaveClass("blue");
 });
 
 test("button renders with correct text before click", () => {});

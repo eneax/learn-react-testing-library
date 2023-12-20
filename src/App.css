@@ -1,7 +1,12 @@
-.red-button {
-  background-color: #ff0000;
-  color: #fff;
+.button {
   border: none;
   cursor: pointer;
   margin: 10px;
+  color: #fff;
+}
+.red {
+  background-color: red;
+}
+.blue {
+  background-color: blue;
 }
