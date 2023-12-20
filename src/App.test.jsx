@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, fireEvent } from "@testing-library/react";
 
 import App from "./App";
 
@@ -20,14 +20,26 @@ test("App contains correct link", () => {
   expect(linkElement).toBeInTheDocument();
 });
 
-test("button renders with correct color before click", () => {
+test("button click flow", () => {
+  // render app
   render(<App />);
+
+  // find button
   const buttonElement = screen.getByRole("button", { name: /blue/i });
+
+  // check initial color
   expect(buttonElement).toHaveClass("red-button");
+
+  // click button
+  fireEvent.click(buttonElement);
+
+  // check button text
+  expect(buttonElement).toHaveTextContent(/red/i);
+
+  // check button color
+  expect(buttonElement).toHaveClass("blue-button");
 });
 
 test("button renders with correct text before click", () => {});
-
-test("button renders with correct color after click", () => {});
 
 test("button renders with correct text after click", () => {});
