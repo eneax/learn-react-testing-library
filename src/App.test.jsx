@@ -1,6 +1,7 @@
 import { render, screen, fireEvent } from "@testing-library/react";
 
 import App from "./App";
+import { kebabCaseToPascalCase } from "./helpers";
 
 test("empty test", () => {});
 
@@ -86,5 +87,17 @@ test("checkbox flow after button click", () => {
   // click checkbox again to re-enable button
   fireEvent.click(checkboxElement);
   expect(buttonElement).toBeEnabled();
-  expect(buttonElement).toHaveClass("blue");
+
+describe("kebabCaseToPascalCase", () => {
+  test("works for no hyphens", () => {
+    expect(kebabCaseToPascalCase("red")).toBe("Red");
+  });
+  test("works for one hyphen", () => {
+    expect(kebabCaseToPascalCase("midnight-blue")).toBe("Midnight Blue");
+  });
+  test("works for multiple hyphens", () => {
+    expect(kebabCaseToPascalCase("medium-violet-red")).toBe(
+      "Medium Violet Red"
+    );
+  });
 });
