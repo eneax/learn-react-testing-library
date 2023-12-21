@@ -1,3 +1,3 @@
-# Vite + React
+# Learn React Testing Library
 
-This template provides a minimal setup to get React working in Vite.
+This repo contains projects that I've created while learning React Testing Library.
