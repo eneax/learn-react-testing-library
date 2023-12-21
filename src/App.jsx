@@ -28,7 +28,7 @@ export default function App() {
       </a>
 
       <button
-        className={`button ${buttonColor} ${disabled ? "disabled" : ""}`}
+        className={`button ${disabled ? "disabled" : buttonColor}`}
         onClick={handleClick}
         disabled={disabled}
       >
