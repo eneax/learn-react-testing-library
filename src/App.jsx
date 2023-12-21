@@ -25,6 +25,13 @@ export default function App() {
       <button className={`button ${buttonColor}`} onClick={handleClick}>
         Change to {nextButtonColor}
       </button>
+
+      <input
+        type="checkbox"
+        id="disable-button-checkbox"
+        defaultChecked={false}
+      />
+      <label htmlFor="disable-button-checkbox">Disable button</label>
     </main>
   );
 }

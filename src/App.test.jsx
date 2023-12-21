@@ -21,7 +21,7 @@ test("App contains correct link", () => {
 });
 
 test("button click flow", () => {
-  // render app
+  // render component
   render(<App />);
 
   // find button
@@ -40,6 +40,17 @@ test("button click flow", () => {
   expect(buttonElement).toHaveClass("blue");
 });
 
-test("button renders with correct text before click", () => {});
+test("checkbox flow", () => {
+  // render component
+  render(<App />);
 
-test("button renders with correct text after click", () => {});
+  // find elements
+  const buttonElement = screen.getByRole("button", { name: /blue/i });
+  const checkboxElement = screen.getByRole("checkbox", {
+    name: /disable button/i,
+  });
+
+  // check initial conditions
+  expect(buttonElement).toBeEnabled();
+  expect(checkboxElement).not.toBeChecked();
+});
