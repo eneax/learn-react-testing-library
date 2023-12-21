@@ -10,3 +10,7 @@
 .blue {
   background-color: blue;
 }
+.disabled {
+  background-color: gray;
+  cursor: not-allowed;
+}
