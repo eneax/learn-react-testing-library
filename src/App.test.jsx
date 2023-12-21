@@ -29,7 +29,7 @@ test("button click flow", () => {
   const buttonElement = screen.getByRole("button", { name: /blue/i });
 
   // check initial color
-  expect(buttonElement).toHaveClass("red");
+  expect(buttonElement).toHaveClass("medium-violet-red");
 
   // click button
   fireEvent.click(buttonElement);
@@ -38,7 +38,7 @@ test("button click flow", () => {
   expect(buttonElement).toHaveTextContent(/red/i);
 
   // check button color
-  expect(buttonElement).toHaveClass("blue");
+  expect(buttonElement).toHaveClass("midnight-blue");
 });
 
 test("checkbox flow before button click", () => {
@@ -63,7 +63,7 @@ test("checkbox flow before button click", () => {
   // click checkbox again to re-enable button
   fireEvent.click(checkboxElement);
   expect(buttonElement).toBeEnabled();
-  expect(buttonElement).toHaveClass("red");
+  expect(buttonElement).toHaveClass("medium-violet-red");
 });
 
 test("checkbox flow after button click", () => {
@@ -87,6 +87,8 @@ test("checkbox flow after button click", () => {
   // click checkbox again to re-enable button
   fireEvent.click(checkboxElement);
   expect(buttonElement).toBeEnabled();
+  expect(buttonElement).toHaveClass("midnight-blue");
+});
 
 describe("kebabCaseToPascalCase", () => {
   test("works for no hyphens", () => {

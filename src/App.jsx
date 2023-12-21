@@ -1,11 +1,13 @@
 import * as React from "react";
 
 import "./App.css";
+import { kebabCaseToPascalCase } from "./helpers";
 
 export default function App() {
   const [disabled, setDisabled] = React.useState(false);
-  const [buttonColor, setButtonColor] = React.useState("red");
-  const nextButtonColor = buttonColor === "red" ? "blue" : "red";
+  const [buttonColor, setButtonColor] = React.useState("medium-violet-red");
+  const nextButtonColor =
+    buttonColor === "medium-violet-red" ? "midnight-blue" : "medium-violet-red";
 
   const handleClick = () => {
     setButtonColor(nextButtonColor);
@@ -32,7 +34,7 @@ export default function App() {
         onClick={handleClick}
         disabled={disabled}
       >
-        Change to {nextButtonColor}
+        Change to {kebabCaseToPascalCase(nextButtonColor)}
       </button>
 
       <input

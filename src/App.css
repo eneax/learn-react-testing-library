@@ -4,13 +4,24 @@
   margin: 10px;
   color: #fff;
 }
+
 .red {
   background-color: red;
 }
+
 .blue {
   background-color: blue;
 }
+
 .disabled {
   background-color: gray;
   cursor: not-allowed;
+}
+
+.medium-violet-red {
+  background-color: mediumvioletred;
+}
+
+.midnight-blue {
+  background-color: midnightblue;
 }
