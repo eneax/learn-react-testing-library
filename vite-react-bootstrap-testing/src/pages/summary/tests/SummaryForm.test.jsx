@@ -33,3 +33,22 @@ test("Checkbox enables button on first click and disables on second click", asyn
   await user.click(checkbox);
   expect(confirmButton).toBeDisabled();
 });
+
+test("popover responds to hover", async () => {
+  const user = userEvent.setup();
+  render(<SummaryForm />);
+
+  // popover starts out hidden by default
+  const nullPopover = screen.queryByText(/nothing to see here/i); // queryByText because the element is not expected to be there
+  expect(nullPopover).not.toBeInTheDocument();
+
+  // popover appears upon mouseover of checkbox label
+  const termsAndConditions = screen.getByText(/terms and conditions/i);
+  await user.hover(termsAndConditions);
+  const popover = screen.getByText(/nothing to see here/i); // getByText because the element is expected to be there
+  expect(popover).toBeInTheDocument();
+
+  // popover disappears when we mouse out
+  await user.unhover(termsAndConditions);
+  expect(popover).not.toBeInTheDocument();
+});
