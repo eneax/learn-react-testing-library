@@ -1,6 +1,6 @@
-import { render, screen } from "@testing-library/react";
 import { HttpResponse, http } from "msw";
 
+import { render, screen } from "../../../test-utils/testing-library-utils";
 import { server } from "../../../mocks/server";
 import OrderEntry from "../OrderEntry";
 
