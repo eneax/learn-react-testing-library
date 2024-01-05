@@ -1,0 +1,60 @@
+import * as React from "react";
+import PropTypes from "prop-types";
+import axios from "axios";
+import Button from "react-bootstrap/Button";
+
+import { useOrderDetails } from "../../contexts/OrderDetails";
+import AlertBanner from "../common/AlertBanner";
+
+export default function OrderConfirmation({ setOrderPhase }) {
+  const [orderNumber, setOrderNumber] = React.useState(null);
+  const [error, setError] = React.useState(false);
+  const { resetOrder } = useOrderDetails();
+
+  React.useEffect(() => {
+    axios
+      // in a real app we would get order details from context and send with POST
+      .post(`http://localhost:3030/order`)
+      .then((response) => {
+        setOrderNumber(response.data.orderNumber);
+      })
+      .catch(() => setError(true));
+  }, []);
+
+  function handleClick() {
+    resetOrder();
+    setOrderPhase("inProgress");
+  }
+
+  const newOrderButton = (
+    <Button onClick={handleClick}>Create new order</Button>
+  );
+
+  if (error) {
+    return (
+      <>
+        <AlertBanner message={null} variant={null} />
+        {newOrderButton}
+      </>
+    );
+  }
+
+  if (orderNumber) {
+    return (
+      <div style={{ textAlign: "center" }}>
+        <h1>Thank You!</h1>
+        <p>Your order number is {orderNumber}</p>
+        <p style={{ fontSize: "25%" }}>
+          as per our terms and conditions, nothing will happen now
+        </p>
+        {newOrderButton}
+      </div>
+    );
+  } else {
+    return <div>Loading</div>;
+  }
+}
+
+OrderConfirmation.propTypes = {
+  setOrderPhase: PropTypes.func,
+};
