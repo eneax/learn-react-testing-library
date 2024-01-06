@@ -11,9 +11,7 @@ test("Initial Conditions", () => {
   });
   expect(checkbox).not.toBeChecked();
 
-  const confirmButton = screen.getByRole("button", {
-    name: /confirm order/i,
-  });
+  const confirmButton = screen.getByRole("button", { name: /confirm order/i });
   expect(confirmButton).toBeDisabled();
 });
 

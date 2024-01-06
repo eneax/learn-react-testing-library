@@ -1,11 +1,17 @@
 import * as React from "react";
+import PropTypes from "prop-types";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Popover from "react-bootstrap/Popover";
 
-export default function SummaryForm() {
+export default function SummaryForm({ setOrderPhase }) {
   const [tcChecked, setTcChecked] = React.useState(false);
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    setOrderPhase("completed");
+  }
 
   const popover = (
     <Popover id="popover-basic">
@@ -23,7 +29,7 @@ export default function SummaryForm() {
   );
 
   return (
-    <Form>
+    <Form onSubmit={handleSubmit}>
       <Form.Group controlId="terms-and-conditions">
         <Form.Check
           type="checkbox"
@@ -38,3 +44,7 @@ export default function SummaryForm() {
     </Form>
   );
 }
+
+SummaryForm.propTypes = {
+  setOrderPhase: PropTypes.func,
+};
