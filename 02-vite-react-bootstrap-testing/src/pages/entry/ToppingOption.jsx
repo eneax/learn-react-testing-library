@@ -25,6 +25,6 @@ export default function ToppingOption({ name, imagePath }) {
 }
 
 ToppingOption.propTypes = {
-  name: PropTypes.string.isRequired,
-  imagePath: PropTypes.string.isRequired,
+  name: PropTypes.string,
+  imagePath: PropTypes.string,
 };

@@ -54,6 +54,6 @@ export default function ScoopOption({ name, imagePath }) {
 }
 
 ScoopOption.propTypes = {
-  name: PropTypes.string.isRequired,
-  imagePath: PropTypes.string.isRequired,
+  name: PropTypes.string,
+  imagePath: PropTypes.string,
 };
