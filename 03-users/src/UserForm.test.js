@@ -47,3 +47,22 @@ test("it calls the onUserAdd function when the form is submitted", async () => {
     email: "john.doe@example.com",
   });
 });
+
+test("it clears the inputs when the form is submitted", async () => {
+  render(<UserForm onUserAdd={() => {}} />); // no need to pass a mock function here
+
+  const nameInput = screen.getByRole("textbox", { name: /name/i });
+  const emailInput = screen.getByRole("textbox", { name: /email/i });
+  const button = screen.getByRole("button");
+
+  await user.click(nameInput);
+  await user.keyboard("John Doe");
+
+  await user.click(emailInput);
+  await user.keyboard("john.doe@example.com");
+
+  await user.click(button);
+
+  expect(nameInput).toHaveValue("");
+  expect(emailInput).toHaveValue("");
+});
