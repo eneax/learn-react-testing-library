@@ -20,6 +20,8 @@ function renderComponent() {
   );
 }
 
-test("displays link to the GitHub homepage for this repo", () => {
+test("displays link to the GitHub homepage for this repo", async () => {
   renderComponent();
+
+  await screen.findByRole("img", { name: /javascript/i }); // fix act warning by waiting for the icon to load first
 });
