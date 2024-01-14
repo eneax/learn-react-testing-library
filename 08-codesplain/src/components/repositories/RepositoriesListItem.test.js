@@ -13,15 +13,21 @@ function renderComponent() {
     html_url: "https://github.com/facebook/react",
   };
 
-  return render(
+  render(
     <MemoryRouter>
       <RepositoriesListItem repository={repository} />
     </MemoryRouter>
   );
+
+  return { repository };
 }
 
 test("displays link to the GitHub homepage for this repo", async () => {
-  renderComponent();
+  const { repository } = renderComponent();
 
-  await screen.findByRole("img", { name: /javascript/i }); // fix act warning by waiting for the icon to load first
+  // fix act warning by waiting for the icon to load first
+  await screen.findByRole("img", { name: /javascript/i });
+
+  const link = screen.getByRole("link", { name: /github repository/i });
+  expect(link).toHaveAttribute("href", repository.html_url);
 });
