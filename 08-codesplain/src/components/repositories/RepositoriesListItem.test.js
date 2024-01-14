@@ -8,7 +8,7 @@ function renderComponent() {
     full_name: "facebook/react",
     language: "JavaScript",
     description: "A JS library for building UIs",
-    owner: "facebook",
+    owner: { login: "facebook" },
     name: "react",
     html_url: "https://github.com/facebook/react",
   };
@@ -38,4 +38,16 @@ test("displays the FileIcon with the appropriate icon", async () => {
   const icon = await screen.findByRole("img", { name: /javascript/i });
 
   expect(icon).toHaveClass("js-icon");
+});
+
+test("displays a link to the code editor page", async () => {
+  const { repository } = renderComponent();
+
+  await screen.findByRole("img", { name: /javascript/i });
+
+  const link = await screen.findByRole("link", {
+    name: new RegExp(repository.owner.login),
+  });
+
+  expect(link).toHaveAttribute("href", `/repositories/${repository.full_name}`);
 });
