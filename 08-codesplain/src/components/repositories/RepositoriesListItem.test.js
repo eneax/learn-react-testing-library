@@ -31,3 +31,11 @@ test("displays link to the GitHub homepage for this repo", async () => {
   const link = screen.getByRole("link", { name: /github repository/i });
   expect(link).toHaveAttribute("href", repository.html_url);
 });
+
+test("displays the FileIcon with the appropriate icon", async () => {
+  renderComponent();
+
+  const icon = await screen.findByRole("img", { name: /javascript/i });
+
+  expect(icon).toHaveClass("js-icon");
+});
